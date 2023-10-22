@@ -52,9 +52,21 @@
 
           <!-- Content wrapper -->
           <div class="content-wrapper">
-            <!-- Content -->
-            @yield('contents')
-            <!-- / Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <div class="row justify-content-between pb-2">
+                    <div class="col">
+                        <h5 class="fw-bold"><span class="text-muted fw-light"><a href="{{ route('admin.dashboard') }}"><i class="tf-icons bx bx-home-circle"></i> Dashboard</a></span> / {{ $title ?? '' }}</h5>
+                    </div>
+                    <div class="col text-end">
+                        @foreach ($buttons ?? [] as $button)
+                            <a href="{{ $button['link'] ?? 'javascript:void(0)' }}" {{ isset($button['modal']) ? 'data-bs-toggle=modal data-bs-target=#'.$button['modal'] : '' }} class="btn btn-primary btn-sm me-1"><i class='{{ $button['icon'] }}'></i> {{ $button['name'] }}</a>
+                        @endforeach
+                    </div>
+                </div>
+
+                @yield('contents')
+                @stack('modal')
+            </div>
 
             <!-- Footer -->
             @include('layouts.admin.partials.footer')
