@@ -4,7 +4,7 @@
 ])
 
 @section('contents')
-<form action="{{ route('admin.news.update', $news->id) }}" method="post" class="custom-reload-form">
+<form action="{{ route('admin.news.update', $news->id) }}" method="post" class="custom-reload-form" enctype="multipart/form-data">
     @csrf
     @method('put')
     <div class="row">

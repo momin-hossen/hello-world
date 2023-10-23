@@ -50,10 +50,6 @@ class NewsController extends Controller
             'image' => $this->upload($request, 'image')
         ]);
 
-        // return response()->json([
-        //     'message' => 'News created successfully.',
-        //     'redirect' => route('admin.news.index')
-        // ]);
         return redirect()->route('admin.news.index');
     }
 
@@ -92,10 +88,7 @@ class NewsController extends Controller
             'image' => $request->hasFile('image') ? $this->upload($request, 'image', $news->image) : $news->image
         ]);
 
-        return response()->json([
-            'message' => 'News updated successfully.',
-            'redirect' => route('admin.news.index')
-        ]);
+        return redirect()->route('admin.news.index');
     }
 
     /**
@@ -108,9 +101,7 @@ class NewsController extends Controller
             Storage::delete($news->image);
         }
         $news->delete();
-        return response()->json([
-            'message' => 'News deleted successfully.',
-            'redirect' => route('admin.news.index')
-        ]);
+        // return redirect()->route('admin.news.index');
+        return back();
     }
 }

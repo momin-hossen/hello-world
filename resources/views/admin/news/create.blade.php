@@ -4,7 +4,7 @@
 ])
 
 @section('contents')
-<form action="{{ route('admin.news.store') }}" method="post" class="custom-reload-form">
+<form action="{{ route('admin.news.store') }}" method="post" class="custom-reload-form" enctype="multipart/form-data">
     @csrf
 
     <div class="row">
