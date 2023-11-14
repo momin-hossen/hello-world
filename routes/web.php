@@ -17,18 +17,15 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('admin/dashboard', [DashboardController::class, 'adminDashboard']);
+Route::get('user/dashboard', [DashboardController::class, 'userDashboard']);
 
-// Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
-    Route::resource('users', UserController::class);
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-    Route::resource('news', NewsController::class);
-});
+// Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
+//     Route::resource('users', UserController::class);
+//     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+//     Route::resource('news', NewsController::class);
+// });
 
 
 Route::middleware('auth')->group(function () {

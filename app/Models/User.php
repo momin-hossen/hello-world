@@ -24,10 +24,7 @@ class User extends Authenticatable
         'role',
         'avatar',
         'status',
-        'plan_id',
-        'username',
         'password',
-        'will_expire',
         'email_verified_at',
     ];
 
